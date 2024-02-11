@@ -1,0 +1,21 @@
+# Dependency directories
+node_modules/
+
+# Built files
+dist/
+
+# Environment variables
+.env
+
+# IDE and editor files
+.vscode/
+.idea/
+
+# Log files
+*.log
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db

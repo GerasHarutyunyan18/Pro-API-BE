@@ -1,8 +1,10 @@
 import { Router } from "express";
-import { signUp } from "./controller";
+import { checkAuthToken, login, signUp } from "./controller";
 
-const AuthRouter = Router()
+const AuthRouter = Router();
 
-AuthRouter.post('/signup', signUp)
+AuthRouter.post("/signup", signUp);
+AuthRouter.post("/login", login);
+AuthRouter.post("/authToken/:token", checkAuthToken);
 
-export default AuthRouter
+export default AuthRouter;
