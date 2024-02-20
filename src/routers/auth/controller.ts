@@ -39,7 +39,7 @@ export const signUp = async (req: Request, res: Response) => {
     }
 
     res.send({ success: true, user, token });
-  } catch (error) {
+  } catch {
     res.send({ success: false, errors: [Errors.Internal] });
   }
 };
@@ -78,7 +78,7 @@ export const login = async (req: Request, res: Response) => {
     });
 
     res.send({ success: true, user, token });
-  } catch (error) {
+  } catch {
     res.send({ success: false, error: [Errors.Internal] });
   }
 };
@@ -107,7 +107,7 @@ export const checkAuthToken = async (req: Request, res: Response) => {
 
       res.send({ success: true, user });
     });
-  } catch (error) {
+  } catch {
     res.send({ success: false, errors: [Errors.Internal] });
   }
 };

@@ -1,6 +1,7 @@
 import { Schema, model, Document } from "mongoose";
 
 export interface IApp {
+  ownerId: string;
   name: string;
   type: string;
   industry: string;
@@ -9,6 +10,7 @@ export interface IApp {
 }
 
 const userSchema = new Schema<IApp & Document>({
+  ownerId: { type: String, required: true },
   name: { type: String, required: true },
   type: { type: String, required: true },
   industry: { type: String, required: true },
@@ -16,6 +18,6 @@ const userSchema = new Schema<IApp & Document>({
   description: { type: String },
 });
 
-const App = model<IApp & Document>("User", userSchema);
+const App = model<IApp & Document>("App", userSchema);
 
 export default App;

@@ -20,4 +20,12 @@ export const Errors = {
     message: "User not found.",
     code: "005",
   },
+  AppNotFound: {
+    message: "App not found.",
+    code: "006",
+  },
+  PermissionDenied: {
+    message: "Permission denied.",
+    code: "007",
+  },
 };

@@ -1,23 +1,36 @@
 import { Schema, model, Document } from "mongoose";
+import { HttpRequestMethods, ValueTypes } from "../constants/enum";
+import { Header, Parameter } from "../constants/types";
 
-export interface IUser {
-  name: string;
-  surname: string;
-  nickname: string;
-  email: string;
-  password: string;
-  personalAccessKey?: string;
+export interface IApi {
+  method: HttpRequestMethods;
+  appId: string;
+  endpoint: string;
+  params: Parameter[];
+  body: string;
+  headers: Header[];
 }
 
-const userSchema = new Schema<IUser & Document>({
+const parameterSchema = new Schema<Parameter>({
   name: { type: String, required: true },
-  surname: { type: String, require: true },
-  nickname: { type: String, require: true, unique: true },
-  email: { type: String, require: true, unique: true },
-  password: { type: String, require: true },
-  personalAccessKey: { type: String, require: false },
+  type: { type: String },
+  description: { type: String },
 });
 
-const User = model<IUser & Document>("User", userSchema);
+const headerSchema = new Schema<Header>({
+  key: { type: String, required: true },
+  value: { type: String, required: true },
+});
 
-export default User;
+const apiSchema = new Schema<IApi & Document>({
+  method: { type: String, required: true },
+  appId: { type: String, required: true },
+  endpoint: { type: String, required: true },
+  params: { type: [parameterSchema] },
+  body: { type: String },
+  headers: { type: [headerSchema] },
+});
+
+const Api = model<IApi & Document>("Api", apiSchema);
+
+export default Api;

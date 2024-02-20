@@ -1,8 +1,9 @@
-import express from 'express';
-import * as bodyParser from 'body-parser';
-import mongoose from 'mongoose';
-import cors from 'cors';
-import AuthRouter from './routers/auth/router';
+import express from "express";
+import * as bodyParser from "body-parser";
+import mongoose from "mongoose";
+import cors from "cors";
+import AuthRouter from "./routers/auth/router";
+import AppRouter from "./routers/app/router";
 
 const app = express();
 app.use(bodyParser.json());
@@ -23,7 +24,8 @@ db.once("open", () => {
   console.log("Connected to MongoDB");
 });
 
-app.use('/auth', AuthRouter);
+app.use("/auth", AuthRouter);
+app.use("/app", AppRouter);
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
