@@ -14,7 +14,7 @@ app.use(cors());
 const port = 8000;
 
 const mongoURI =
-  "mongodb+srv://root:geras2004.@cluster0.p7ntirq.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://root:geras2004.@cluster0.p7ntirq.mongodb.net/?retryWrites=true&w=majority/apis";
 
 
 mongoose.connect(mongoURI);
