@@ -6,6 +6,7 @@ export interface IApi {
   method: HttpRequestMethods;
   appId: string;
   endpoint: string;
+  description: string;
   params: Parameter[];
   body: string;
   headers: Header[];
@@ -25,6 +26,7 @@ const headerSchema = new Schema<Header>({
 const apiSchema = new Schema<IApi & Document>({
   method: { type: String, required: true },
   appId: { type: String, required: true },
+  description: { type: String },
   endpoint: { type: String, required: true },
   params: { type: [parameterSchema] },
   body: { type: String },
