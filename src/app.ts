@@ -4,6 +4,8 @@ import mongoose from "mongoose";
 import cors from "cors";
 import AuthRouter from "./routers/auth/router";
 import AppRouter from "./routers/app/router";
+import axios from 'axios'
+import { data } from "./objects";
 
 const app = express();
 app.use(bodyParser.json());
@@ -28,6 +30,9 @@ db.once("open", () => {
 
 app.use("/auth", AuthRouter);
 app.use("/app", AppRouter);
+app.use('/', async (req, res) => {
+  res.send(data)
+})
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
